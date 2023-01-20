@@ -19,37 +19,38 @@ $(row).addClass("row");
 
 // MAKES THE 8 ROWS
 for (let i = 0; i <= 8; i++) {
-  var divEl = $("<div>");
-  var textareaEl = $("<textarea>");
-  var buttonEl = $("<button>");
-  var imgEl = $("<i>");
+  var newDiv = $("<div>");
+  var newTxtArea = $("<textarea>");
+  var newButton = $("<button>");
+  var newImg = $("<i>");
   var time = moment().hour(i + 9).format("h A");
   var now = moment().format("h A");
-  var tempNow = moment().set('hour', 2);
+  var tempNow = moment().set({ 'hour': 12, 'minute': 0, 'second': 0 });
+  console.log(tempNow);
 
-  $(row).append(divEl);
-  $(divEl).addClass("time-block col-1");
-  $(divEl).text(time);
+  $(row).append(newDiv);
+  $(newDiv).addClass("hour col-1");
+  $(newDiv).text(time);
 
-  $(row).append(textareaEl);
-  $(textareaEl).addClass("description col-10");
+  $(row).append(newTxtArea);
+  $(newTxtArea).addClass("description col-10");
 
-  $(row).append(buttonEl);
-  $(buttonEl).addClass("saveBtn col-1");
-  $(buttonEl).append(imgEl);
-  $(imgEl).addClass("fas fa-save");
+  $(row).append(newButton);
+  $(newButton).addClass("saveBtn col-1");
+  $(newButton).append(newImg);
+  $(newImg).addClass("fas fa-save");
 
-  if ( time !== tempNow) {
-    textareaEl.addClass("past");
+  if (moment(time).isBefore(tempNow)) {
+    newTxtArea.addClass("past");
     console.log("IN THE PAST");
-  } else if ( time === tempNow){
-    textareaEl.addClass("present")
-    console.log("RIGHT NOW");
 
-  } else {
-    textareaEl.addClass("future")
+  } else if (moment(time).isAfter(tempNow)){
+    newTxtArea.addClass("future")
     console.log("IN THE FUTURE");
 
+  } else {
+    newTxtArea.addClass("present")
+    console.log("IN THE PRESENT");
   }
 
 }
