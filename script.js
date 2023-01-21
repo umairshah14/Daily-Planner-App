@@ -24,9 +24,10 @@ for (let i = 0; i <= 8; i++) {
   var newButton = $("<button>");
   var newImg = $("<i>");
   var time = moment().hour(i + 9).format("h A");
+  var tempNow = moment().set({ hour: 14, minute: 0, second: 0 }).format("h A");
   var now = moment().format("h A");
-  var tempNow = moment().set({ 'hour': 12, 'minute': 0, 'second': 0 });
-  console.log(tempNow);
+  var timeCompare = moment(time, "h:mma")
+  var tempNowCompare = moment(tempNow, "h:mma")
 
   $(row).append(newDiv);
   $(newDiv).addClass("hour col-1");
@@ -40,19 +41,20 @@ for (let i = 0; i <= 8; i++) {
   $(newButton).append(newImg);
   $(newImg).addClass("fas fa-save");
 
-  if (moment(time).isBefore(tempNow)) {
+
+
+  if (moment(timeCompare).isBefore(tempNowCompare)) {
     newTxtArea.addClass("past");
     console.log("IN THE PAST");
 
-  } else if (moment(time).isAfter(tempNow)){
-    newTxtArea.addClass("future")
+  } else if (moment(timeCompare).isAfter(tempNowCompare)) {
+    newTxtArea.addClass("future");
     console.log("IN THE FUTURE");
 
   } else {
-    newTxtArea.addClass("present")
+    newTxtArea.addClass("present");
     console.log("IN THE PRESENT");
   }
-
 }
 // function to make future hours green
 
