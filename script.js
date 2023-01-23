@@ -47,8 +47,8 @@ for (let i = 0; i <= 8; i++) {
 
   $(row).append(newTxtArea);
   $(newTxtArea).addClass("description col-10");
-  var taskInfo = localStorage.getItem(i) //GETS THE TASK THAT WAS CREATED FROM LOCALSTORAGE
-  $(newTxtArea).val(taskInfo); //PERSISTS THE TASK THAT WAS CREATED
+  var taskInfo = localStorage.getItem(i) //GETS THE TASK THAT WAS CREATED FROM LOCAL STORAGE
+  $(newTxtArea).val(taskInfo); //PERSISTS THE TASK THAT WAS CREATED EVEN ON REFRESH
 
   $(row).append(newButton);
   $(newButton).addClass("saveBtn col-1");
