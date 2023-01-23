@@ -51,16 +51,12 @@ for (let i = 0; i <= 8; i++) {
   
 
 
-
+// APPLIES DIFFERENT COLORS TO TIMEBLOCK DEPEDNING ON THE TIME OF DAY
   if (moment(timeCompare).isBefore(tempNowCompare)) {
     newTxtArea.addClass("past");
   } else if (moment(timeCompare).isAfter(tempNowCompare)) {
     newTxtArea.addClass("future");
   } else {
     newTxtArea.addClass("present");
-    console.log("IN THE PRESENT");
   }
 }
-// function to make future hours green
-
-// function to make current hour red
