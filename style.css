@@ -4,6 +4,14 @@ body {
   line-height: 1;
 }
 
+.clearButton {
+  outline: #000000;
+}
+.taskAdded {
+  color:#77dd77;
+  font-weight: bold;
+  font-size: large;
+}
 textarea {
   background: transparent;
   border: none;

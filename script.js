@@ -7,11 +7,22 @@ var futureEl = $(".future");
 var saveBtnEl = $(".save-btn");
 var currentDayEl = $("#currentDay");
 var containerEl = $(".container");
+var clearButton = $("<button>");
+var clearMessage = $("<p>");
 
-var today = moment();
-$("#currentDay").text(today.format("dddd, MMMM Mo"));
+var today = moment()
+$(currentDayEl).text(today.format("dddd, MMMM Do"));
 
-// function to check if you're past the previous hours
+
+$("header").append(clearButton)
+$(clearButton).text("Clear Schedule")
+$(clearButton).on("click", function(){
+  localStorage.clear()
+  $("header").append(clearMessage)
+  clearMessage.text("please refresh the page")
+})
+
+
 
 var row = $("<div>");
 $(containerEl).append(row);
@@ -23,6 +34,7 @@ for (let i = 0; i <= 8; i++) {
   var newTxtArea = $("<textarea>");
   var newButton = $("<button>");
   var newImg = $("<i>");
+  var newP = $("<p>");
   var time = moment().hour(i + 9).format("h A");
   var tempNow = moment().set({ hour: 14, minute: 0, second: 0 }).format("h A");
   var now = moment().format("h A");
@@ -35,18 +47,20 @@ for (let i = 0; i <= 8; i++) {
 
   $(row).append(newTxtArea);
   $(newTxtArea).addClass("description col-10");
-  var taskInfo = localStorage.getItem(i)
-  $(newTxtArea).val(taskInfo);
+  var taskInfo = localStorage.getItem(i) //GETS THE TASK THAT WAS CREATED FROM LOCALSTORAGE
+  $(newTxtArea).val(taskInfo); //PERSISTS THE TASK THAT WAS CREATED
 
   $(row).append(newButton);
   $(newButton).addClass("saveBtn col-1");
   $(newButton).append(newImg);
   $(newImg).addClass("fas fa-save");
-
   $(newButton).on("click", function () {
     let textarea = $(this).prev(); // get the textarea that comes before the clicked button
     let text = textarea.val();
     localStorage.setItem(i, text);
+    $("header").append(newP)
+    newP.addClass("taskAdded")
+    newP.text("Time block edited successfully!")
   });
   
 
