@@ -54,10 +54,8 @@ for (let i = 0; i <= 8; i++) {
 
   if (moment(timeCompare).isBefore(tempNowCompare)) {
     newTxtArea.addClass("past");
-    console.log("IN THE PAST");
   } else if (moment(timeCompare).isAfter(tempNowCompare)) {
     newTxtArea.addClass("future");
-    console.log("IN THE FUTURE");
   } else {
     newTxtArea.addClass("present");
     console.log("IN THE PRESENT");
