@@ -23,13 +23,11 @@ for (let i = 0; i <= 8; i++) {
   var newTxtArea = $("<textarea>");
   var newButton = $("<button>");
   var newImg = $("<i>");
-  var time = moment()
-    .hour(i + 9)
-    .format("h A");
+  var time = moment().hour(i + 9).format("h A");
   var tempNow = moment().set({ hour: 14, minute: 0, second: 0 }).format("h A");
   var now = moment().format("h A");
   var timeCompare = moment(time, "h:mma");
-  var tempNowCompare = moment(tempNow, "h:mma");
+  var tempNowCompare = moment(now, "h:mma");
 
   $(row).append(newDiv);
   $(newDiv).addClass("hour col-1");
@@ -37,20 +35,22 @@ for (let i = 0; i <= 8; i++) {
 
   $(row).append(newTxtArea);
   $(newTxtArea).addClass("description col-10");
+  var taskInfo = localStorage.getItem(i)
+  $(newTxtArea).val(taskInfo);
 
   $(row).append(newButton);
   $(newButton).addClass("saveBtn col-1");
   $(newButton).append(newImg);
   $(newImg).addClass("fas fa-save");
+
   $(newButton).on("click", function () {
-    
     let textarea = $(this).prev(); // get the textarea that comes before the clicked button
     let text = textarea.val();
-    localStorage.setItem("taskContent", text);
-    console.log("task saved successfully");
-    text = localStorage.getItem("taskContent");
-    $(descriptionEl).val(text);
+    localStorage.setItem(i, text);
   });
+  
+
+
 
   if (moment(timeCompare).isBefore(tempNowCompare)) {
     newTxtArea.addClass("past");
