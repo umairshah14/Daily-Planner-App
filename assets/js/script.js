@@ -40,7 +40,7 @@ for (let i = 0; i <= 8; i++) {
   var timeCompare = moment(time, "h:mma");
   var tempNowCompare = moment(now, "h:mma");
 
-  //CREATES AND FILLS HOUR SECTION
+  //CREATES AND FILLS HOUR SECTION 
   $(row).append(newDiv);
   $(newDiv).addClass("hour col-1");
   $(newDiv).text(time);
