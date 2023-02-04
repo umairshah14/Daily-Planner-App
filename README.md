@@ -7,7 +7,7 @@ This task helped me understand how to properly use jquery to grab elements from 
 
 Below is a screenshot of what the project should look like when opened in the browser 
 
-![screenshot of the project](./Screenshot%202023-01-23%20at%2002.52.29.png)
+![screenshot of the project](./assets/images/Screenshot%202023-01-23%20at%2002.52.29.png)
 
 ## Usage
 

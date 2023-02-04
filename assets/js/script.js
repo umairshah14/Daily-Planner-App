@@ -1,3 +1,4 @@
+// GRABBING ELEMENTS FROM THE DOM
 var descriptionEl = $(".description");
 var timeBlockEl = $(".time-block");
 var hourEl = $(".hour");
@@ -10,19 +11,16 @@ var containerEl = $(".container");
 var clearButton = $("<button>");
 var clearMessage = $("<p>");
 
+//DEFINING TIME USING MOMENT.JS THEN FORMATTING IT
 var today = moment()
 $(currentDayEl).text(today.format("dddd, MMMM Do"));
-
 
 $("header").append(clearButton)
 $(clearButton).text("Clear Schedule")
 $(clearButton).on("click", function(){
   localStorage.clear()
-  $("header").append(clearMessage)
-  clearMessage.text("please refresh the page")
+  location.reload();
 })
-
-
 
 var row = $("<div>");
 $(containerEl).append(row);
@@ -54,6 +52,7 @@ for (let i = 0; i <= 8; i++) {
   $(newButton).addClass("saveBtn col-1");
   $(newButton).append(newImg);
   $(newImg).addClass("fas fa-save");
+
   $(newButton).on("click", function () {
     let textarea = $(this).prev(); // get the textarea that comes before the clicked button
     let text = textarea.val();
@@ -61,9 +60,8 @@ for (let i = 0; i <= 8; i++) {
     $("header").append(newP)
     newP.addClass("taskAdded")
     newP.text("Time block edited successfully!")
-  });
-  
 
+  });
 
 // APPLIES DIFFERENT COLORS TO TIMEBLOCK DEPEDNING ON THE TIME OF DAY
   if (moment(timeCompare).isBefore(tempNowCompare)) {
