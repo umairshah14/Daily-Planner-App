@@ -22,6 +22,7 @@ $(clearButton).on("click", function(){
   location.reload();
 })
 
+// CREATES BOOTSTRAP ROW
 var row = $("<div>");
 $(containerEl).append(row);
 $(row).addClass("row");
@@ -44,18 +45,19 @@ for (let i = 0; i <= 8; i++) {
   $(newDiv).addClass("hour col-1");
   $(newDiv).text(time);
 
-  //CREATES AND TEXTAREA  SECTION
+  //CREATES THE TEXTAREA SECTION
   $(row).append(newTxtArea);
   $(newTxtArea).addClass("description col-10");
   var taskInfo = localStorage.getItem(i) //GETS THE TASK THAT WAS CREATED FROM LOCAL STORAGE
   $(newTxtArea).val(taskInfo); //PERSISTS THE TASK THAT WAS CREATED EVEN ON REFRESH
   
-  //CREATES AND FILLS HOUR SECTION
+  //CREATES THE SAVE BUTTON
   $(row).append(newButton);
   $(newButton).addClass("saveBtn col-1");
   $(newButton).append(newImg);
   $(newImg).addClass("fas fa-save");
 
+  // ENABLES THE SAVE BUTTON TO SAVE TO LOCAL STORAGE
   $(newButton).on("click", function () {
     let textarea = $(this).prev(); // get the textarea that comes before the clicked button
     let text = textarea.val();
