@@ -39,15 +39,18 @@ for (let i = 0; i <= 8; i++) {
   var timeCompare = moment(time, "h:mma");
   var tempNowCompare = moment(now, "h:mma");
 
+  //CREATES AND FILLS HOUR SECTION
   $(row).append(newDiv);
   $(newDiv).addClass("hour col-1");
   $(newDiv).text(time);
 
+  //CREATES AND TEXTAREA  SECTION
   $(row).append(newTxtArea);
   $(newTxtArea).addClass("description col-10");
   var taskInfo = localStorage.getItem(i) //GETS THE TASK THAT WAS CREATED FROM LOCAL STORAGE
   $(newTxtArea).val(taskInfo); //PERSISTS THE TASK THAT WAS CREATED EVEN ON REFRESH
-
+  
+  //CREATES AND FILLS HOUR SECTION
   $(row).append(newButton);
   $(newButton).addClass("saveBtn col-1");
   $(newButton).append(newImg);
